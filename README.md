@@ -1,2 +1,5 @@
 # it3038c-scripts
-script repo for it3038c
+
+##README
+
+#### This is my readme. As I create scripts, I will update.
