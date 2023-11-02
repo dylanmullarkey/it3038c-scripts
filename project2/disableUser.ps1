@@ -1,56 +1,5 @@
-<#
-    Disable AD/M365 User Account Script
-    Version 1.0
-    Dylan Mullarkey
-
-    Requirements
-    ---------------
-    1. Ensure WinRM service is running on remote computer.
-        :: Test with command
-            Test-WSMan -ComputerName <Name>  
-        
-    2. Remote computer needs Active Directory Module Installed
-        :: Run command on remote computer
-            Install-Module ActiveDirectory
-    
-    3. Edit $pc variable to your remote computer name on line 53
-    
-    Instructions
-    ---------------
-      The script will run entirely on the remote computer in a domain. It will prompt for credentials to 
-    remote pc. Input your credentials.
-
-      You will then be prompted for the user SAM you wish to disable. Enter the information.
-    If the user entered doesn't exist, you will be prompted again. If they are already
-    disabled, the program will shut down. Otherwise, you will be asked to confirm the
-    action. Entering yes will disable both AD and M365 sign-on.
-
-      Run ADSync on DC to update changes.
-
-    Variables
-    ---------------
-    + SAMAccountName - Input containing AD user SAM string
-    + userExists - Set to false until valid user SAM is provided. Continues to loop for input. Boolean
-    + user - Holds provided user object from Get-ADUser
-
-
-    ScriptBlocks
-    ---------------
-      $script_DisableUser :: Runs Get-ADUser with SAMAccountName to disable user. Confirms selection.
-        (Param) SAMAccountName
-
-      $script_GetADUser :: Runs Get-ADUser with SAMAccountName to find user. Checks if user exists.
-                           If already disabled, ends runtime. 
-        (Param) SAMAccountName
-
-    Updates
-    ---------------
-    Version 1.0 || 10.26.2023: Script disables users AD/M365 account based on SAM.
-    Version 1.1 || 10.31.2023: Add logging and change nested scripts to functions
-#>
-
 $creds = Get-Credential
-$pc = "dc.mullardt."
+$pc = "mullardt-dc.mullardt.local"
 $s = New-PSSession -ComputerName $pc -Credential $creds
 
 #start of remote session
@@ -63,7 +12,7 @@ Invoke-Command -session $s -ScriptBlock{
         Start-Sleep -Seconds 2
         if ($user.Enabled -like "False"){
             Write-Host("User is already disabled. Shutting down.")
-            Exit-PSSession
+            Exit
         }
         Write-Host "User found!" -ForegroundColor Green
         Start-Sleep -Seconds 2
@@ -94,3 +43,4 @@ Invoke-Command -session $s -ScriptBlock{
     }
         Disable-User($SAMAccountName)
 }
+Exit
