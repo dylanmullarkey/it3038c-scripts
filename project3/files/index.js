@@ -62,6 +62,7 @@ btnSubtract.addEventListener("click", function () {
   bottlesFinished--
 })
 
+// assigns bottleSize depending on button clicked
 function setBottleSize(size) {
   bottleSize = size
 }
