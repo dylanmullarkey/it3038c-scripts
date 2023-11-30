@@ -41,12 +41,13 @@
               id="input-hours"
             />
             <h3 class="hour-txt">h</h3>
-            <input
-              type="text"
-              maxlength="2"
-              class="time-input"
-              id="input-minutes"
-            />
+            <input list="minutes" class="time-input" id="input-minutes" />
+            <datalist id="input-minutes">
+              <option value="15"></option>
+              <option value="30"></option>
+              <option value="45"></option>
+              <option value="0"></option>
+            </datalist>
             <h3 class="minute-txt">min</h3>
           </div>
         </div>
