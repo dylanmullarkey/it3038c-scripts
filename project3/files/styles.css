@@ -10,7 +10,7 @@ h1 {
   margin-top: 2px;
 }
 h2 {
-margin-top: 5px;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 .app-container {
@@ -123,15 +123,15 @@ margin-top: 5px;
   margin: 0;
 }
 
-.start-btn{
-    margin: 5px auto;
-    width: 50px;
-    height: 25px;
-    border: none;
-    box-shadow: 0px 0px 2px;
-    border-radius: 4px;
+.start-btn {
+  margin: 5px auto;
+  width: 50px;
+  height: 25px;
+  border: none;
+  box-shadow: 0px 0px 2px;
+  border-radius: 4px;
 }
 
-.selected{
-    background-color: #dad7cd
+.selected {
+  background-color: #dad7cd;
 }
