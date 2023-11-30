@@ -1,0 +1,133 @@
+html,
+body {
+  font-family: "Acme", sans-serif;
+  color: #21587a;
+  background-color: #f1faee;
+}
+
+h1 {
+  margin-bottom: 0px;
+  margin-top: 2px;
+}
+h2 {
+margin-top: 5px;
+  margin-bottom: 5px;
+}
+.app-container {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 332px;
+}
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.goal-container {
+  text-align: center;
+}
+.break {
+  /* revisit */
+  border: 1px solid black;
+}
+
+.cap-handle {
+  margin: 0px auto;
+  border: 5px solid black;
+  height: 15px;
+  width: 50px;
+  border-radius: 50% 50% 0 0;
+  background-color: #f1faee;
+}
+.default-cap {
+  margin: 0px auto;
+  width: 100px;
+  height: 25px;
+  background-color: black;
+  border-radius: 20px 20px 10px 10px;
+}
+.default-bottle {
+  margin: 0px auto;
+  height: 200px;
+  width: 100px;
+  background-color: #f1faee;
+  border: 3px solid #a8dadc;
+  border-radius: 14px 14px 10px 10px;
+}
+.goal-input {
+  width: 50px;
+  height: 20px;
+}
+.main-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.size-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-width: 100px;
+  text-align: center;
+}
+
+.bottle-size-btn {
+  margin: 5px auto;
+  width: 50px;
+  height: 25px;
+  border: none;
+  box-shadow: 0px 0px 2px;
+  border-radius: 4px;
+}
+.bottle-container {
+  text-align: center;
+}
+.count-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-width: 100px;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+.timer,
+.goal {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.time-input,
+.goal-input {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.hour-txt,
+.volume-txt {
+  margin: 0 5px 0 0;
+}
+.minute-txt,
+.goal-txt {
+  margin: 0;
+}
+
+.start-btn{
+    margin: 5px auto;
+    width: 50px;
+    height: 25px;
+    border: none;
+    box-shadow: 0px 0px 2px;
+    border-radius: 4px;
+}

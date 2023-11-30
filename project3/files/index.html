@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>Hydro Homie</h1>
+        <!-- <br class="break"> -->
+      </header>
+      <div class="input-container">
+        <div class="goal-container">
+          <h2>Goal</h2>
+          <div class="goal">
+            <input type="text" maxlength="3" class="goal-input" id="input-goal"/>
+            <h3 class="volume-txt">oz.</h3>
+          </div>
+        </div>
+        <div class="timer-container">
+          <h2>Timer</h2>
+          <div class="timer">
+            <input type="text" maxlength="2" class="time-input" id="input-hours" />
+            <h3 class="hour-txt">h</h3>
+            <input type="text" maxlength="2" class="time-input" id="input-minutes"/>
+            <h3 class="minute-txt">min</h3>
+          </div>
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="size-container">
+          <h3>Bottle Size</h3>
+          <button class="bottle-size-btn" id="btn-16oz">16oz</button>
+          <button class="bottle-size-btn" id="btn-20oz">20oz</button>
+          <button class="bottle-size-btn" id="btn-24oz">24oz</button>
+          <button class="bottle-size-btn" id="btn-32oz">32oz</button>
+          <button class="bottle-size-btn" id="btn-40oz">40oz</button>
+        </div>
+        <div class="bottle-container">
+        <button class="start-btn" id="btn-start">Start</button>
+          <div class="cap-handle"></div>
+          <div class="default-cap"></div>
+          <div class="default-bottle"></div>
+          <p id="progress">0 oz. / 0 oz.</p>
+        </div>
+        <div class="count-container">
+          <h3>Bottle Count</h3>
+          <button class="bottle-size-btn" id="btnAdd">+</button>
+          <button class="bottle-size-btn" id="btnSub">-</button>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
