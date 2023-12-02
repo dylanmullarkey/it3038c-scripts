@@ -22,6 +22,7 @@ const minutesInput = document.getElementById("input-minutes")
 // grabbing p element which shows progress
 const progressEl = document.getElementById("progress")
 const bottleSizeP = document.getElementById("p-bottle-size")
+const congratulations = document.getElementById("congratsTxt")
 
 // initializing variables for calculations
 let bottleSize = 24
@@ -91,12 +92,18 @@ function updateProgress() {
   console.log(
     `${ozDrank}oz Drank,  ${bottleSize} bottle size,  ${bottlesFinished} bottles finished, ${goalOz}`
   )
-  progressEl.textContent = `${ozDrank} oz. / ${goalOz} oz.`
+  if (ozDrank >= goalOz) {
+    progressEl.textContent = `${goalOz} oz. / ${goalOz} oz.`
+    finishedMessage()
+  } else {
+    progressEl.textContent = `${ozDrank} oz. / ${goalOz} oz.`
+  }
 }
 
 function renderStart() {
   if (validInput) {
-    const goalOz = goalInput.value
+    goalOz = goalInput.value
+    console.log(goalOz)
     progressEl.textContent = `0 oz. / ${goalOz} oz.`
     startButton.textContent = "Reset"
     // goalInput.classList.add("disabled-input")
@@ -109,10 +116,19 @@ function renderStart() {
     return
   }
 }
+
+function renderTime() {}
+
 function disableInput(element) {
   for (i = 0; i < arguments.length; i++) {
     arguments[i].classList.add("disabled-input")
   }
+}
+
+function finishedMessage() {
+  disableInput(btnAdd, btnSubtract)
+  progressEl.classList.add("hide")
+  congratulations.classList.remove("hide")
 }
 
 function disableBottleSize() {

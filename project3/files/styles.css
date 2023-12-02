@@ -124,6 +124,7 @@ h2 {
 }
 
 .bottle-size-h3 {
+  margin-bottom: 0;
 }
 .bottle-size-txt {
   margin: 0;
@@ -146,4 +147,13 @@ h2 {
   color: #aaa;
   background: #f1faee;
   border: none;
+}
+
+.popup {
+  /* visibility: hidden; */
+  color: #588157;
+}
+
+.hide {
+  display: none !important;
 }
