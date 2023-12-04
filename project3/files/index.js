@@ -14,10 +14,8 @@ const sizeButtons = [btn16Oz, btn20Oz, btn24Oz, btn32Oz, btn40Oz]
 const btnAdd = document.getElementById("btnAdd")
 const btnSubtract = document.getElementById("btnSub")
 
-// grabbing input fields for goal & timer
+// grabbing input field for goal
 const goalInput = document.getElementById("input-goal")
-const hoursInput = document.getElementById("input-hours")
-const minutesInput = document.getElementById("input-minutes")
 
 // grabbing p element which shows progress
 const progressEl = document.getElementById("progress")
@@ -26,21 +24,21 @@ const congratulations = document.getElementById("congratsTxt")
 
 // initializing variables for calculations
 let bottleSize = 24
-let hours = 0
-let minutes = 0
 let goalOz = 0
 let bottlesFinished = 0
 let ozDrank = 0
 let validInput = false
 
+// setting default to 24oz
 let selectedButton = btn24Oz
 highlightButton(btn24Oz)
 
+// button and input event listeners
 startButton.addEventListener("click", function () {
   if (startButton.innerText === "Reset") {
     location.reload()
   } else {
-    checkInput(goalInput, hoursInput, minutesInput)
+    checkInput(goalInput) //, hoursInput, minutesInput
     renderStart()
   }
 })
@@ -87,6 +85,7 @@ function setBottleSize(size) {
   bottleSizeP.textContent = `${bottleSize} oz.`
 }
 
+// updates progress and triggers finishedMessage() if goal oz is met
 function updateProgress() {
   ozDrank = bottleSize * bottlesFinished
   console.log(
@@ -100,16 +99,14 @@ function updateProgress() {
   }
 }
 
+// checks input and renders it to web page
 function renderStart() {
   if (validInput) {
     goalOz = goalInput.value
     console.log(goalOz)
     progressEl.textContent = `0 oz. / ${goalOz} oz.`
     startButton.textContent = "Reset"
-    // goalInput.classList.add("disabled-input")
-    disableInput(goalInput, hoursInput, minutesInput)
-    hoursInput.classList.add("disabled-input")
-    minutesInput.classList.add("disabled-input")
+    disableInput(goalInput)
     disableBottleSize()
   } else {
     console.log("Invalid input -- cannot start")
@@ -117,24 +114,22 @@ function renderStart() {
   }
 }
 
-function renderTime() {}
-
+// adds disabled-input CSS class to html elements
 function disableInput(element) {
   for (i = 0; i < arguments.length; i++) {
     arguments[i].classList.add("disabled-input")
   }
 }
 
+// shows congrats message and disables the add/subtract buttons
 function finishedMessage() {
   disableInput(btnAdd, btnSubtract)
   progressEl.classList.add("hide")
   congratulations.classList.remove("hide")
 }
 
+// disables bottle size buttons
 function disableBottleSize() {
-  // if (buttonId === selectedButton) {
-  //   return
-  // } else {
   for (i = 0; i < sizeButtons.length; i++) {
     sizeButtons[i].classList.add("disabled-input")
   }
@@ -160,9 +155,10 @@ function removeBottleSizeHighlight(buttonId) {
   }
 }
 
-function checkInput(input1, input2, input3) {
+// ensures goal input is present and valid
+function checkInput(input1) {
   for (i = 0; i < arguments.length; i++) {
-    if (!arguments[i].value) {
+    if (!arguments[i].value || arguments[i].value < 0) {
       arguments[i].setAttribute("style", `background-color: #e63946;`)
       validInput = false
     } else {
@@ -170,32 +166,4 @@ function checkInput(input1, input2, input3) {
       validInput = true
     }
   }
-  if (input2 === false && input3 === true) {
-    input2.setAttribute("style", `background-color: white;`)
-  }
-  if (input3 === false && input2 === true) {
-    input3.setAttribute("style", `background-color: white;`)
-  }
-}
-
-function stopStopwatch() {
-  clearInterval(stopwatchInterval) // stop the interval
-  elapsedPausedTime = new Date().getTime() - startTime // calculate elapsed paused time
-  stopwatchInterval = null // reset the interval variable
-}
-
-function resetStopwatch() {
-  stopStopwatch() // stop the interval
-  elapsedPausedTime = 0 // reset the elapsed paused time variable
-  document.getElementById("stopwatch").innerHTML = "00:00:00" // reset the display
-}
-
-function updateStopwatch() {
-  var currentTime = new Date().getTime() // get current time in milliseconds
-  var elapsedTime = currentTime - startTime // calculate elapsed time in milliseconds
-  var seconds = Math.floor(elapsedTime / 1000) % 60 // calculate seconds
-  var minutes = Math.floor(elapsedTime / 1000 / 60) % 60 // calculate minutes
-  var hours = Math.floor(elapsedTime / 1000 / 60 / 60) // calculate hours
-  var displayTime = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds) // format display time
-  document.getElementById("stopwatch").innerHTML = displayTime // update the display
 }

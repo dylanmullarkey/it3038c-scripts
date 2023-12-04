@@ -54,7 +54,7 @@ h2 {
   margin: 0px auto;
   height: 200px;
   width: 100px;
-  background-color: #f1faee;
+  background-color: #a8dadc;
   border: 3px solid #a8dadc;
   border-radius: 14px 14px 10px 10px;
 }
@@ -98,6 +98,7 @@ h2 {
 
 .timer-container {
   text-align: center;
+  display: none;
 }
 
 .timer,
