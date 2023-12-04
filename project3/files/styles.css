@@ -3,6 +3,7 @@ body {
   font-family: "Acme", sans-serif;
   color: #21587a;
   background-color: #f1faee;
+  margin: 0;
 }
 
 h1 {
@@ -31,7 +32,6 @@ h2 {
   text-align: center;
 }
 .break {
-  /* revisit */
   border: 1px solid black;
 }
 
@@ -151,7 +151,6 @@ h2 {
 }
 
 .popup {
-  /* visibility: hidden; */
   color: #588157;
 }
 
